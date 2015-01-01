@@ -2,26 +2,27 @@ package taxescalculation;
 
 
 public class code {
-    private String yearlysalary ;
+    private int yearlysalary ;
     private int Nbkids ;
     private boolean married ;
-    private String Amount ;
-     private int abatement;
+    private int Amount ;
+    
     private static final String companyName="LCU taxes calculation";
    
     
-     public code (String yearlysalary, int Nbkids, 
-            boolean married, String Amount){
+     public code (int yearlysalary, int Nbkids, 
+            boolean married, int Amount, int abatement){
         this.yearlysalary=yearlysalary;
         this.Nbkids=Nbkids;
         this.married=married;
-        this.Amount=Amount ;
+        this.Amount=Amount;
+       
 }
-    public String getyearlysalary(){
+    public int getyearlysalary(){
         return yearlysalary;
     }
     
-    public void setyearlysalary(String yearlysalary){
+    public void setyearlysalary(int yearlysalary){
         this.yearlysalary=yearlysalary;
     }
    
@@ -43,7 +44,7 @@ public class code {
    
     
    public int getAmount(){
-        int  marriedabatement = 0 , kidsabatement = 0, tax ;
+        int  marriedabatement = 0 , kidsabatement = 0, tax = 0;
         int initialabatement=7500000;
               
        
@@ -54,11 +55,11 @@ public class code {
         if(Nbkids>=1){
             kidsabatement=500000*Nbkids;            
         }
-         abatement= marriedabatement+kidsabatement+initialabatement;
-        return 0;
-
-     Amount=yearlysalary-abatement;
-    if(Amount>=0){
+         
+        Amount=yearlysalary-(marriedabatement+kidsabatement+initialabatement);
+        
+        
+   if(Amount>=0){
         tax=2;
     }
     if(Amount>=6000001){
@@ -77,7 +78,8 @@ public class code {
         tax=20;
     }
     Amount=((Amount*(tax/100))/12);
-        return null;
+        return 0;
+     
    }
 }
 

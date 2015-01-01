@@ -19,6 +19,7 @@ public class taxes extends javax.swing.JFrame {
      */
     public taxes() {
         initComponents();
+       marriedchkbx.setSelected(true);
         rootPane.setDefaultButton(submitbut);
         this.setTitle("taxes calculation");
     }
@@ -54,6 +55,11 @@ public class taxes extends javax.swing.JFrame {
         marriedchkbx.setText("married");
 
         submitbut.setText("submit");
+        submitbut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitbutActionPerformed(evt);
+            }
+        });
 
         yearlysalarytxtfield.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         yearlysalarytxtfield.addActionListener(new java.awt.event.ActionListener() {
@@ -170,6 +176,11 @@ public class taxes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_yearlysalarytxtfieldKeyTyped
 
+    private void submitbutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitbutActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_submitbutActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -201,6 +212,7 @@ public class taxes extends javax.swing.JFrame {
          
              /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new taxes().setVisible(true);
             }
