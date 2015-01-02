@@ -1,6 +1,8 @@
 package taxescalculation;
 
 import java.awt.event.KeyEvent;
+import javax.swing.JEditorPane;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,12 +15,15 @@ import java.awt.event.KeyEvent;
  * @author user
  */
 public class taxes extends javax.swing.JFrame {
+    private String married;
+    private Object Nbkids;
 
     /**
      * Creates new form taxes
      */
     public taxes() {
         initComponents();
+      
        marriedchkbx.setSelected(true);
         rootPane.setDefaultButton(submitbut);
         this.setTitle("taxes calculation");
@@ -43,7 +48,7 @@ public class taxes extends javax.swing.JFrame {
         taxesamountpanel = new javax.swing.JPanel();
         amountlbl = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        amountPane1 = new javax.swing.JEditorPane();
+        amountPane = new javax.swing.JEditorPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Taxes Calculation");
@@ -81,7 +86,7 @@ public class taxes extends javax.swing.JFrame {
 
         amountlbl.setText("Amount:");
 
-        jScrollPane2.setViewportView(amountPane1);
+        jScrollPane2.setViewportView(amountPane);
 
         javax.swing.GroupLayout taxesamountpanelLayout = new javax.swing.GroupLayout(taxesamountpanel);
         taxesamountpanel.setLayout(taxesamountpanelLayout);
@@ -176,10 +181,28 @@ public class taxes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_yearlysalarytxtfieldKeyTyped
 
+    @SuppressWarnings("empty-statement")
     private void submitbutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitbutActionPerformed
-        // TODO add your handling code here:
+        //TODO add your handling code here:
+     if(yearlysalarytxtfield.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(this, "Please enter yearlysalary","Waring",JOptionPane.INFORMATION_MESSAGE);
+        }else{
+           String yearlysalary = yearlysalarytxtfield.getText();   
+           
+         boolean married;
         
+            married = marriedchkbx.isSelected();
+           int Nbkids = 
+                    Integer.parseInt(
+                            cbxkids.getSelectedItem().toString());
+           code co = 
+                new code(yearlysalary,married,Nbkids);
+        amountPane.setFont(co.getAmount());
     }//GEN-LAST:event_submitbutActionPerformed
+
+    public taxes(JEditorPane amountPane) {
+        this.amountPane = amountPane;
+    }
 
     /**
      * @param args the command line arguments
@@ -220,7 +243,7 @@ public class taxes extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JEditorPane amountPane1;
+    private javax.swing.JEditorPane amountPane;
     private javax.swing.JLabel amountlbl;
     private javax.swing.JComboBox cbxkids;
     private javax.swing.JLabel jLabel1;

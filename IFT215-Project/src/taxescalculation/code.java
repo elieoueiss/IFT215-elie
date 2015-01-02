@@ -18,6 +18,10 @@ public class code {
         this.Amount=Amount;
        
 }
+
+    code(String yearlysalary, boolean married, int Nbkids) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     public int getyearlysalary(){
         return yearlysalary;
     }
