@@ -82,7 +82,7 @@ public class code {
         tax=20;
     }
     Amount=((Amount*(tax/100))/12);
-        return 0;
+        return Amount;
      
    }
 }

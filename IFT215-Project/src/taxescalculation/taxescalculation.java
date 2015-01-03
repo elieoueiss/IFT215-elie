@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
  * @author user
  */
 public class taxescalculation extends javax.swing.JFrame {
+    private String getAmount;
+    private int Nbkids;
 
     /**
      * Creates new form taxescalculation
@@ -172,14 +174,29 @@ public class taxescalculation extends javax.swing.JFrame {
                             cbxkids.getSelectedItem().toString());
            code co = 
                 new code(yearlysalary,married,Nbkids);
-      amountPane.setSelectionEnd(Nbkids);
+      amountPane.setText(String.valueOf(co.getAmount()));
     
     }                                         
 
 
     }//GEN-LAST:event_submitbutActionPerformed
- 
-      private void yearlysalarytxtfieldKeyTyped(java.awt.event.KeyEvent evt) {                                              
+ private void married (boolean married){
+    if(married==true){
+        marriedchkbx.setText(getAmount);
+        
+    }
+ }
+   private void changekidsValues(boolean married){
+        
+        if(Nbkids==0){
+            cbxkids.removeAllItems();
+        }
+        if(Nbkids>=1){
+          cbxkids.removeAllItems();  
+        }
+   }
+
+ private void yearlysalarytxtfieldKeyTyped(java.awt.event.KeyEvent evt) {                                              
         // TODO add your handling code here:
         char c=evt.getKeyChar();
         if(!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE)){
@@ -215,6 +232,7 @@ public class taxescalculation extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new taxescalculation().setVisible(true);
             }
