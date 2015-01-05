@@ -6,7 +6,6 @@
 
 package taxescalculation;
 
-import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -160,7 +159,7 @@ public class taxescalculation extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxkidsActionPerformed
 
     private void submitbutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitbutActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here: 
         if(yearlysalarytxtfield.getText().trim().equals("")){
             JOptionPane.showMessageDialog(this, "Please enter yearlysalary","Waring",JOptionPane.INFORMATION_MESSAGE);
         }else{
@@ -187,7 +186,8 @@ public class taxescalculation extends javax.swing.JFrame {
     }
  }
    private void changekidsValues(boolean married){
-        
+        Object selectedItem = cbxkids.getSelectedItem();
+        if (selectedItem!=null){
         if(Nbkids==0){
             cbxkids.removeAllItems();
         }
@@ -195,14 +195,15 @@ public class taxescalculation extends javax.swing.JFrame {
           cbxkids.removeAllItems();  
         }
    }
+   }
 
  private void yearlysalarytxtfieldKeyTyped(java.awt.event.KeyEvent evt) {                                              
         // TODO add your handling code here:
         char c=evt.getKeyChar();
-        if(!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE)){
+        if((Character.isDigit(c)))
             evt.consume();
         }
-    }                             
+                                
     /**
      * @param args the command line arguments
      */
